@@ -10,7 +10,9 @@ graph = {}
 id_to_name = {}
 name_to_id = {}
 
-with open("/Users/yamashitashiori/Desktop/Python3/GoogleSTEP_homework/homework_week4/data/links_small.txt") as f:
+# homework_week4 に移って実行してください
+
+with open("./data/links_small.txt") as f:
     for line in f:
         # とりあえず2つの数字をlistにして読み込む
         line = line.replace('\n','')
@@ -28,7 +30,7 @@ with open("/Users/yamashitashiori/Desktop/Python3/GoogleSTEP_homework/homework_w
 #print(graph.keys())
 
 
-with open("/Users/yamashitashiori/Desktop/Python3/GoogleSTEP_homework/homework_week4/data/pages_small.txt") as f_:
+with open("./data/pages_small.txt") as f_:
     for line in f_:
         line = line.replace('\n','')
         id, name = line.split('\t')
