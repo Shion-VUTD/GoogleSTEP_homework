@@ -2,7 +2,7 @@
 
 import re
 from collections import deque
-from turtle import st
+
 # graghを隣接リストの形で保持する
 # idと名称のセットを辞書で保存する
 
@@ -16,7 +16,7 @@ with open("./data/links.txt") as f:
     for line in f:
         # とりあえず2つの数字をlistにして読み込む
         line = line.replace('\n','')
-        line_mod = re.sub('\s+',' ',line)
+        line_mod = re.sub('\s+',' ',line) # 正規表現を用いて、空白の数を一つに揃えている
         relative_nodes = list(map(int,line_mod.split(' ')))
         #print(relative_nodes)
 
@@ -113,8 +113,6 @@ def name_bfs(graph,start_name,target_name):
     print('bfs search finished!')
 
     return reachable
-
-
 
 """
 多分ここにlinks_small,pages_smallでテストするコードを入れたほうが良い気がしました…
