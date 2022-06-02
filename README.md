@@ -1,7 +1,9 @@
 # Code Review
 homework_week4の中にある、question1.pyというファイルのコードをレビューしてください。
 
-## homework_week4/question1.pyの実行方法
+## homework_week4/question1.pyの実行方法 
+
+テスト環境: Python 3.8.5
 
 1. homework_week4/question1.pyのコードをコピーし、ローカルのファイルにペーストしてください。
 2. 1.で作成したファイル(ここではquestion1.pyとしています)及びダウンロードしたデータセットを、以下のようなディレクトリ構造で配置してください。
