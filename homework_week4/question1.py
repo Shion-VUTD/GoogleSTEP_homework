@@ -12,7 +12,7 @@ name_to_id = {}
 
 # homework_week4 に移って実行してください
 
-with open("./data/links_small.txt") as f:
+with open("./data/links.txt") as f:
     for line in f:
         # とりあえず2つの数字をlistにして読み込む
         line = line.replace('\n','')
@@ -30,7 +30,7 @@ with open("./data/links_small.txt") as f:
 #print(graph.keys())
 
 
-with open("./data/pages_small.txt") as f_:
+with open("./data/pages.txt") as f_:
     for line in f_:
         line = line.replace('\n','')
         id, name = line.split('\t')
@@ -46,16 +46,16 @@ with open("./data/pages_small.txt") as f_:
 def id_dfs(graph,start_id,target_id):
     stack = []
     # 探索済みかどうかを保持
-    visited_list = [False]*(max(graph.keys())+1) # なんでノード1-indexにしたんや……
+    visited_list = [False]*(max(graph.keys())+1) 
 
+    #初期値を入れる
     stack.append(start_id)
     visited_list[start_id] = True
 
     while len(stack) > 0: # stackに入ってるノードがなくなるまで続ける
-        #print(visited_list)
-        #print(stack)
         node = stack.pop(-1) # 全てのノードを最大1度ずつ見るので、これを繰り返すことによる計算量は合計O(V)
-        if node == target_id:
+
+        if node == target_id: # 処理の終了条件
             return True
         
         for next_node in graph[node]: # 全てのエッジを最大1度ずつ見るので、これを繰り返すことによる計算量はO(E)
@@ -76,12 +76,10 @@ def id_bfs(graph,start_id,target_id):
     visited_list[start_id] = True
     queue.append(start_id)
 
-    while len(queue) > 0:
+    while len(queue) > 0: # キューに入ってるノードがなくなるまで続ける
         node = queue.popleft()
-        #print(queue)
-        #print(visited_list)
 
-        if node == target_id:
+        if node == target_id: # 処理の終了条件
             return True
          
         for next_node in graph[node]:
@@ -98,7 +96,11 @@ def name_dfs(graph,start_name,target_name):
     start_id = name_to_id[start_name]
     target_id = name_to_id[target_name]
 
-    return id_dfs(graph,start_id,target_id)
+    # 探索
+    reachable = id_dfs(graph,start_id,target_id)
+    print('dfs search finished!')
+
+    return reachable
 
 
 def name_bfs(graph,start_name,target_name):
@@ -106,10 +108,16 @@ def name_bfs(graph,start_name,target_name):
     start_id = name_to_id[start_name]
     target_id = name_to_id[target_name]
 
-    return id_bfs(graph,start_id,target_id)
+    # 探索
+    reachable = id_bfs(graph,start_id,target_id)
+    print('bfs search finished!')
+
+    return reachable
 
 
 
-print(id_bfs(graph,30,1089))
-print(id_dfs(graph,30,1089))
-print(name_bfs(graph,'人工知能','アイスクリーム'))
+"""
+多分ここにlinks_small,pages_smallでテストするコードを入れたほうが良い気がしました…
+"""
+print(name_bfs(graph,'Google','渋谷'))
+print(name_dfs(graph,'Google','渋谷'))
