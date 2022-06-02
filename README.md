@@ -31,7 +31,6 @@ bfs search finished!
 True
 dfs search finished!
 True
-
 ```
 
 ## 注意点
